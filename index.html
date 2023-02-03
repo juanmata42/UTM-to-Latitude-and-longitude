@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div>
+        <label for="northing">Northing: </label>
+        <input type="text" id="northing"/>
+    </div>
+    <div>
+        <label for="easting">Easting: </label>
+        <input type="text" id="easting"/>
+    </div>
+    <div>
+        <label for="zone">Zone: </label>
+        <input type="text" id="zone"/>
+    </div>
+    <div>
+        <label for="zone letter">Zone: </label>
+        <input type="text" id="zone letter"/>
+    </div>
+    <button id="convert-button">Convert</button>
+    <div id="output">
+        Latitude:
+        <span id="latitude"></span>
+        <br />
+        Longitude:
+        <span id="longitude"></span>
+    </div>
+    <script>
+        const northingInput = document.getElementById("northing");
+        const eastingInput = document.getElementById("easting");
+        const zoneInput = document.getElementById("zone");
+        const zoneLetterInput = document.getElementById("zone letter");
+        const convertButton = document.getElementById("convert-button");
+        const latitudeSpan = document.getElementById("latitude");
+        const longitudeSpan = document.getElementById("longitude");
+        convertButton.addEventListener("click", () => {
+            const northing = parseFloat(northingInput.value);
+            const easting = parseFloat(eastingInput.value);
+            const zone = zoneInput.value;
+
+            const latLong = UTMtoLatLon(northing, easting, zone, zoneLetterInput.value);
+            latitudeSpan.innerText = latLong.lat;
+            longitudeSpan.innerText = latLong.lon
+        });
+    </script>
+</body>
+
+</html>

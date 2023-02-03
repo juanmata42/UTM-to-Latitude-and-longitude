@@ -35,6 +35,6 @@ function UTMtoLatLon(northing, easting, zone, zoneLetter = null) {
     if (zoneLetter >= 'M' && zoneLetter <= 'Z') {
         lat = -90 + lat;
     }
-    /* playSound() */
+    playSound()
     return { lat: lat, lon: lambda };
 }
